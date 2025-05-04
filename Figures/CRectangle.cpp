@@ -1,7 +1,7 @@
 #include "CRectangle.h"
 # include <string>
 # include <iostream>
-#include "Figures/CFigure.h"
+# include "CFigure.h"
 using namespace std;
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)

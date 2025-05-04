@@ -74,5 +74,6 @@ Point CHexagon::getCenter() {
     return Center;
 }
 void CHexagon::Move(Point Center2) {
-    Center = Center2;
+    Center.x = Center2.x;
+    Center.y = Center2.y;
 }

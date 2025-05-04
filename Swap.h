@@ -1,11 +1,14 @@
-#pragma once
+#ifndef SWAP_ACTION_H
+#define SWAP_ACTION_H
 
 #include "Actions/Action.h"
-class Swap:public  Action
+#include "Figures/CFigure.h"
+class Swap : public  Action
 {
-
-	CFigure* selectedFig1;
-	CFigure* selectedFig2;
+private:
+	int selecteditemsnum = 0;
+	CFigure* selectedFig1 = 0;
+	CFigure* selectedFig2 = 0;
 
 public:
 	Swap(ApplicationManager* pApp);
@@ -19,3 +22,4 @@ public:
 
 };
 
+#endif

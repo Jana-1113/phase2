@@ -60,13 +60,13 @@ void AddSelectAction::Execute() {
             if (fig->GetFigureName() == HEXAGON) {
                 hexagonCount++;
             }
-            if (fig->GetFigureName() == TRIANGLE) {
+            else if (fig->GetFigureName() == TRIANGLE) {
                 triangleCount++;
             }
-            if (fig->GetFigureName() == CIRCLE) {
+            else  if (fig->GetFigureName() == CIRCLE) {
                 circleCount++;
             }
-            if (fig->GetFigureName() == RECTANGLE) {
+            else  if (fig->GetFigureName() == RECTANGLE) {
                 rectangleCount++;
             }
             else {
@@ -105,5 +105,4 @@ void AddSelectAction::Execute() {
         pOut->PrintMessage(statusbar_content);
     }
 
-    pManager->UpdateInterface();  // to show the updated verions after the action is completed 
 }

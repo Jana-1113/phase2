@@ -43,7 +43,8 @@ Point CSquare::getCenter() {
     return Center;
  }
 void CSquare::Move(Point Center2) {
-    Center = Center2;
+    Center.x = Center2.x;
+    Center.y = Center2.y;
  }
 
 
