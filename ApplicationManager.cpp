@@ -7,7 +7,7 @@
 #include "AddSelectAction.h"
 #include "AddDeleteAction.h"
 #include "AddClearAllAction.h"
-
+#include "Swap.h"
 # include <iostream>
 using namespace std;
 
@@ -25,12 +25,12 @@ ApplicationManager::ApplicationManager()
 	//Create Input and output
 	pOut = new Output;
 	pIn = pOut->CreateInput();
-	
+
 	FigCount = 0;
-		
+
 	//Create an array of figure pointers and set them to NULL		
-	for(int i=0; i<MaxFigCount; i++)
-		FigList[i] = NULL;	
+	for (int i = 0; i < MaxFigCount; i++)
+		FigList[i] = NULL;
 }
 
 //==================================================================================//
@@ -39,56 +39,56 @@ ApplicationManager::ApplicationManager()
 ActionType ApplicationManager::GetUserAction() const
 {
 	//Ask the input to get the action from the user.
-	return pIn->GetUserAction();		
+	return pIn->GetUserAction();
 }
 ////////////////////////////////////////////////////////////////////////////////////
 //Creates an action and executes it
-void ApplicationManager::ExecuteAction(ActionType ActType) 
+void ApplicationManager::ExecuteAction(ActionType ActType)
 {
 	Action* pAct = NULL;
-	
+
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
-		case DRAW_RECT:
-			pAct = new AddRectAction(this);
-			break;
-		case DRAW_SQUARE:
-			pAct = new AddSquareAction(this);
-			break;
-		case DRAW_CIRCLE:
-			pAct = new AddCircleAction(this);
-			break;
-		case DRAW_TRIANGLE:
-			pAct = new AddTriangleAction(this);
-			break;
-		case DRAW_HEXAGON:
-			pAct = new AddHexagonAction(this);
-			break;
-		case SELECT:
-			pAct = new AddSelectAction(this);
-			break;
-		case DELETE_FIGURE:
-			pAct = new AddDeleteAction(this);
-			break;
-		case CLEAR_ALL:
-			pAct = new AddClearAllAction(this);
-			break;
-    case SWAP:
-			pAct = new SwapAction(this);
-			break;
-		case EXIT:
-       
-			///create ExitAction here
-			
-			break;
-		
-		case STATUS:	//a click on the status bar ==> no action
-			return;
+	case DRAW_RECT:
+		pAct = new AddRectAction(this);
+		break;
+	case DRAW_SQUARE:
+		pAct = new AddSquareAction(this);
+		break;
+	case DRAW_CIRCLE:
+		pAct = new AddCircleAction(this);
+		break;
+	case DRAW_TRIANGLE:
+		pAct = new AddTriangleAction(this);
+		break;
+	case DRAW_HEXAGON:
+		pAct = new AddHexagonAction(this);
+		break;
+	case SELECT:
+		pAct = new AddSelectAction(this);
+		break;
+	case DELETE_FIGURE:
+		pAct = new AddDeleteAction(this);
+		break;
+	case CLEAR_ALL:
+		pAct = new AddClearAllAction(this);
+		break;
+	case SWAP:
+		pAct = new Swap(this);
+		break;
+	case EXIT:
+
+		///create ExitAction here
+
+		break;
+
+	case STATUS:	//a click on the status bar ==> no action
+		return;
 	}
-	
+
 	//Execute the created action
-	if(pAct != NULL)
+	if (pAct != NULL)
 	{
 		pAct->Execute();//Execute
 		delete pAct;	//You may need to change this line depending to your implementation
@@ -109,7 +109,7 @@ void ApplicationManager::AddFigure(CFigure* pFig)
 
 CFigure* ApplicationManager::GetFigure(int x, int y) const
 {
-	
+
 	for (int i = FigCount - 1; i >= 0; --i)// to get the most top figure turn the loop from oldest added to the newest 
 	{
 		if (FigList[i] != NULL && FigList[i]->IsIncluded(x, y))
@@ -123,14 +123,14 @@ void ApplicationManager::DeleteSeletedFigures() {
 	for (int i = 0; i < FigCount;) {
 		if (FigList[i] && FigList[i]->IsSelected()) {
 			delete FigList[i];           // delete what the pointer is pointing to 
-			FigList[i] = NULL ;        // make sure that the pointer now is pointing ot nothing 
+			FigList[i] = NULL;        // make sure that the pointer now is pointing ot nothing 
 
 			// Shift the rest
 			for (int j = i; j < FigCount - 1; ++j) {
 				FigList[j] = FigList[j + 1];
 			}
 
-			FigList[FigCount - 1] = NULL ;  // clean the last one instead of the one that was deleted 
+			FigList[FigCount - 1] = NULL;  // clean the last one instead of the one that was deleted 
 			FigCount--;
 		}
 		else {
@@ -155,27 +155,31 @@ void ApplicationManager::UpdateInterface() const {
 	pOut->ClearDrawArea();  // clear the draw area 
 
 	for (int i = 0; i < FigCount; i++) {
-		if (FigList[i]!= NULL) // redraw all the figures in the figure list again 
+		if (FigList[i] != NULL) // redraw all the figures in the figure list again 
 			FigList[i]->Draw(pOut);
 	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
 //Return a pointer to the input
-Input *ApplicationManager::GetInput() const
-{	return pIn; }
+Input* ApplicationManager::GetInput() const
+{
+	return pIn;
+}
 //Return a pointer to the output
-Output *ApplicationManager::GetOutput() const
-{	return pOut; }
+Output* ApplicationManager::GetOutput() const
+{
+	return pOut;
+}
 ////////////////////////////////////////////////////////////////////////////////////
 //Destructor
 ApplicationManager::~ApplicationManager()
 {
-	for(int i=0; i<FigCount; i++)
+	for (int i = 0; i < FigCount; i++)
 		delete FigList[i];
 	delete pIn;
 	delete pOut;
-	
+
 }
 void ApplicationManager::UnselectAll() {
 	for (int i = 0; i < FigCount; ++i) {
@@ -198,5 +202,3 @@ void ApplicationManager::ClearAll() {
 		FigList[i] = NULL;
 	}
 }
-
-

@@ -39,3 +39,16 @@ void CSquare::PrintFigureInfo(Output* pOut) const {
         "), and side length is  " + to_string(100);
     pOut->PrintMessage(info);
 }
+Point CSquare::getCenter() {
+    return Center;
+ }
+void CSquare::Move(Point Center2) {
+    Center = Center2;
+ }
+
+
+
+
+
+
+

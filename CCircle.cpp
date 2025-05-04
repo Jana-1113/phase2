@@ -36,3 +36,9 @@ void CCircle::PrintFigureInfo(Output* pOut) const {
 		"), Radius = " + to_string(70);
 	pOut->PrintMessage(info);
 }
+Point CCircle::getCenter() {
+	return Center;
+}
+void CCircle::Move(Point Center2) {
+	Center = Center2;
+}

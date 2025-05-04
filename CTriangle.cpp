@@ -55,3 +55,21 @@ void CTriangle::PrintFigureInfo(Output* pOut) const {
 		"), and corner2  (" + to_string(Corner2.x) + ", " + to_string(Corner2.y) + "), and corner3  (" + to_string(Corner3.x) + ", " + to_string(Corner3.y);
 	pOut->PrintMessage(info);
 }
+
+Point CTriangle::getCenter() {
+	Center.x = (Corner1.x + Corner2.x +Corner3.x) / 3;
+	Center.y = (Corner1.y +Corner2.y + Corner3.y) / 3;
+	return Center;
+ }
+
+ void CTriangle:: Move(Point Center2){
+	 Point movevalue;
+	 movevalue.x = Center2.x - Center.x;
+	 movevalue.y = Center2.y - Center.y;
+	 Corner1.x += movevalue.x;
+	 Corner1.y += movevalue.y;
+	 Corner2.x += movevalue.x;
+	 Corner2.y += movevalue.y;
+	 Corner3.x += movevalue.x;
+	 Corner3.y += movevalue.y;
+};

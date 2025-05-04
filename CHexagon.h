@@ -1,4 +1,4 @@
-#ifndef CHEXAGON_H
+ #ifndef CHEXAGON_H
 #define CHEXAGON_H
 
 #include "Figures/CFigure.h"
@@ -14,7 +14,8 @@ public:
 	bool CHexagon::IsIncluded(int x , int y) const;
 	virtual FigureName GetFigureName() const;
 	virtual void PrintFigureInfo(Output* pOut) const;
-
+	virtual Point getCenter();
+	virtual void Move(Point Center2);
 
 };
 

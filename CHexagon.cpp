@@ -70,3 +70,9 @@ void CHexagon::PrintFigureInfo(Output* pOut) const {
         "), and side length is  " + to_string(60);
     pOut->PrintMessage(info);
 }
+Point CHexagon::getCenter() {
+    return Center;
+}
+void CHexagon::Move(Point Center2) {
+    Center = Center2;
+}
