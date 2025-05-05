@@ -6,6 +6,12 @@ using namespace std;
 #include "GUI/Input.h"
 #include "Figures/CFigure.h"
 #include "Figures/CRectangle.h"
+#include <fstream> 
+
+CSquare::CSquare() :CFigure() {
+    Center.x = 0;
+    Center.y = 0;
+}
 
 CSquare::CSquare(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -47,6 +53,17 @@ void CSquare::Move(Point Center2) {
     Center.y = Center2.y;
  }
 
+void CSquare::Save(ofstream& OutFile)
+{
+    OutFile << "SQUARE " << ID << " "
+        << Center.x << " " << Center.y << " " << CFigure::ColorConverter(FigGfxInfo.DrawClr) << " ";
+
+}
+
+void CSquare::Load(ifstream& InFile) {
+    InFile >> ID >> Center.x >> Center.y >> colorofFig;
+    CFigure::StringConverter(colorofFig);
+}
 
 
 

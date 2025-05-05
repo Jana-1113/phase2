@@ -5,7 +5,13 @@
 #include "GUI/Input.h"
 #include "Figures/CFigure.h"
 #include "Figures/CRectangle.h"
+#include <fstream> 
 using namespace std;
+
+CCircle::CCircle() : CFigure() {
+	Center.x = 0;
+	Center.y = 0;
+}
 
 CCircle::CCircle(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -42,4 +48,13 @@ Point CCircle::getCenter() {
 void CCircle::Move(Point Center2) {
 	Center.x = Center2.x;
 	Center.y = Center2.y;
+}
+void CCircle::Save(ofstream& OutFile)
+{
+	OutFile << "CIRCLE " << ID << " "
+		<< Center.x << " " << Center.y << " " << CFigure::ColorConverter(FigGfxInfo.DrawClr) << " ";
+}
+void CCircle::Load(ifstream& InFile) {
+	InFile >> ID >> Center.x >> Center.y >> colorofFig;
+	CFigure::StringConverter(colorofFig);
 }

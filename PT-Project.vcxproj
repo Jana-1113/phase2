@@ -184,6 +184,11 @@
     <ClCompile Include="CSquare.cpp" />
     <ClCompile Include="AddCircleAction.cpp" />
     <ClCompile Include="Swap.cpp" />
+    <ClCompile Include="ActionSave.cpp" />
+    <ClCompile Include="ActionLoad.cpp" />
+    <ClCompile Include="SwitchToDraw.cpp" />
+    <ClCompile Include="SwitchToPlay.cpp" />
+    <ClCompile Include="ExitAction.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddClearAllAction.h" />
@@ -228,6 +233,11 @@
     <ClInclude Include="AddSquareAction.h" />
     <ClInclude Include="AddCircleAction.h" />
     <ClInclude Include="Swap.h" />
+    <ClInclude Include="ActionSave.h" />
+    <ClInclude Include="ActionLoad.h" />
+    <ClInclude Include="SwitchToDraw.h" />
+    <ClInclude Include="SwitchToPlay.h" />
+    <ClInclude Include="ExitAction.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

@@ -10,6 +10,7 @@ private:
 	Point Center;
 	Point points[6];
 public:
+	CHexagon();
 	CHexagon(Point, GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	bool CHexagon::IsIncluded(int x , int y) const;
@@ -20,6 +21,8 @@ public:
 	void GetPoints();
 	virtual void RotateCW();
 	virtual void RotateACW();
+	void Save(ofstream& OutFile)  override;
+	void Load(ifstream& InFile)  override;
 
 };
 

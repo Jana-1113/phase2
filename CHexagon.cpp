@@ -7,7 +7,13 @@ using namespace std;
 #include "Figures/CFigure.h"
 #include "Figures/CRectangle.h"
 #include "CTriangle.h"
+#include <fstream> 
 
+CHexagon::CHexagon() :CFigure()
+{
+    Center.x = 0;
+    Center.y = 0;
+}
 
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -119,7 +125,16 @@ void CHexagon::RotateACW() {
 
     }
 }
-
+void CHexagon::Save(ofstream& OutFile)
+{
+    OutFile << "HEXAGON " << ID << " "
+        << Center.x << " " << Center.y << " " << CFigure::ColorConverter(FigGfxInfo.DrawClr) << " ";
+}
+void CHexagon::Load(ifstream& InFile)
+{
+    InFile >> ID >> Center.x >> Center.y >> colorofFig;
+    CFigure::StringConverter(colorofFig);
+}
 
 
 

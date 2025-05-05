@@ -11,6 +11,7 @@ private:
 	Point Corner3;
 	Point Center;
 public:
+	CTriangle();
 	CTriangle(Point, Point, Point , GfxInfo FigureGfxInfo);
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsIncluded(int x , int y) const;
@@ -20,6 +21,8 @@ public:
 	virtual void Move(Point Center2);
 	virtual void RotateCW();
 	virtual void RotateACW();
+	void Save(ofstream& OutFile)  override;
+	void Load(ifstream& InFile)  override;
 };
 
 #endif

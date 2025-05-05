@@ -8,6 +8,16 @@
 #include "AddDeleteAction.h"
 #include "AddClearAllAction.h"
 #include "Swap.h"
+#include "ActionSave.h"
+#include "ActionLoad.h"
+#include "SwitchToPlay.h"
+#include "SwitchToDraw.h"
+#include "ExitAction.h"
+#include "Figures/CRectangle.h"
+#include "CTriangle.h"
+#include "CSquare.h"
+#include "CCircle.h"
+#include "CHexagon.h"
 #include "RotateAction.h"
 # include <iostream>
 using namespace std;
@@ -78,15 +88,24 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	case SWAP:
 		pAct = new Swap(this);
 		break;
+	case SAVE_GRAPH: //a cclick on save figure
+		pAct = new ActionSave(this);
+		break;
+	case LOAD_GRAPH:// a click on load figure
+		pAct = new ActionLoad(this);
+		break;
+	case TO_PLAY:
+		pAct = new SwitchToPlay(this);
+		break;
+	case TO_DRAW:
+		pAct = new SwitchToDraw(this);
+		return;
 	case ROTATE_FIGURE:
 		pAct = new RotateAction(this);
 		break;
 	case EXIT:
-
-		///create ExitAction here
-
+		pAct = new ExitAction(this);
 		break;
-
 	case STATUS:	//a click on the status bar ==> no action
 		return;
 	}
@@ -139,6 +158,42 @@ void ApplicationManager::DeleteSeletedFigures() {
 		}
 		else {
 			++i; // try to add i outside to take into consideration the shifted object 
+		}
+	}
+}
+
+void ApplicationManager::SaveAll(ofstream& OutFile) {
+	// Write all figures to the file
+	for (int i = 0; i < FigCount; ++i) {
+		if (FigList[i] != nullptr) {
+			FigList[i]->Save(OutFile);  // Each figure knows how to save itself
+		}
+	}
+}
+
+void ApplicationManager::LoadGraph(ifstream& InFile) {
+	for (int i = 0; i < FigCount; i++) {
+		delete FigList[i];
+		FigList[i] = NULL;
+	}
+	FigCount = 0;
+	int numberOfFigures;
+	InFile >> numberOfFigures;
+
+	for (int i = 0; i < numberOfFigures; i++) {
+		string figType;
+		InFile >> figType;
+
+		CFigure* pFig = nullptr;
+
+		if (figType == "RECTANGLE") pFig = new CRectangle;
+		else if (figType == "TRIANGLE") pFig = new CTriangle;
+		else if (figType == "CIRCLE") pFig = new CCircle;
+		else if (figType == "HEXAGON") pFig = new CHexagon;
+		else if (figType == "SQAURE") pFig = new CSquare;
+		if (pFig != nullptr) {
+			pFig->Load(InFile);
+			AddFigure(pFig);
 		}
 	}
 }
