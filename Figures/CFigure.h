@@ -11,8 +11,10 @@ class CFigure
 {
 protected:
 	int ID;		//Each figure has an ID
-	bool Selected;	//true if the figure is selected.
+	bool Selected =false;	//true if the figure is selected.
 	GfxInfo FigGfxInfo;	//Figure graphis info
+	string colorofFig;
+	
 
 	/// Add more parameters if needed.
 
@@ -33,6 +35,27 @@ public:
 	virtual void Move(Point Center2) = 0;
 	virtual void RotateCW() = 0;
 	virtual void RotateACW() = 0;
+	virtual void Save(ofstream& OutFile) = 0;	// //Save the figure parameters to the file
+
+	virtual void Load(ifstream& Infile) = 0;	//Load the figure parameters to the file
+
+	//virtual void PrintInfo(Output* pOut) = 0;	//print all figure info on the status bar
+
+	static string ColorConverter(color C) {
+		if (C == RED)   return "RED";
+		if (C == GREEN) return "GREEN";
+		if (C == BLUE)  return "BLUE";
+		if (C == BLACK) return "BLACK";
+		if (C == WHITE) return "WHITE";
+	}
+	static color StringConverter(string Color) {
+		if (Color == "RED")   return RED;
+		if (Color == "GREEN") return GREEN;
+		if (Color == "BLUE")  return BLUE;
+		if (Color == "BLACK") return BLACK;
+		if (Color == "WHITE") return WHITE;
+	}
+	GfxInfo GetGfxInfo();
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

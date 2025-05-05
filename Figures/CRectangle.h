@@ -20,6 +20,11 @@ public:
 	virtual void RotateCW();
 	virtual void RotateACW();
 
+	void Draw(Output* pOut) const override;
+	void Save(ofstream& OutFile)  override;
+	void Load(ifstream& InFile)  override;
+
+
 };
 
 #endif

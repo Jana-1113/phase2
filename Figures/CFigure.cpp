@@ -26,3 +26,6 @@ void CFigure::ChngFillClr(color Fclr)
 	FigGfxInfo.isFilled = true;
 	FigGfxInfo.FillClr = Fclr;
 }
+GfxInfo CFigure::GetGfxInfo() {
+	return FigGfxInfo;
+}

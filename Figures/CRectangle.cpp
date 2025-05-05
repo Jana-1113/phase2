@@ -75,3 +75,17 @@ void CRectangle::RotateACW() {
 	Corner2.x = Center.x - (temp2.y - Center.y);
 	Corner2.y = Center.y + (temp2.x - Center.x);
 }
+
+
+
+void CRectangle::Save(ofstream& OutFile)
+{
+	OutFile << "RECTANGLE " << ID << " "
+		<< Corner1.x << " " << Corner1.y << " "
+		<< Corner2.x << " " << Corner2.y << " " << CFigure::ColorConverter(FigGfxInfo.DrawClr) << " ";
+
+}
+void CRectangle::Load(ifstream& InFile) {
+	InFile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> colorofFig;
+	CFigure::StringConverter(colorofFig);
+}
