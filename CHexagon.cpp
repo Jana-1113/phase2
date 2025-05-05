@@ -13,16 +13,18 @@ CHexagon::CHexagon() :CFigure()
 {
     Center.x = 0;
     Center.y = 0;
+    rotated = false;
 }
 
 CHexagon::CHexagon(Point P1, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
 	Center = P1;
+    rotated = false;
 }
 void CHexagon::Draw(Output* pOut) const
 {
     //Call Output::DrawSquare to draw a Square on the screen	
-    pOut->DrawHexagon(Center, FigGfxInfo, Selected);
+    pOut->DrawHexagon(Center, FigGfxInfo, Selected, rotated);
 }
 
 bool CHexagon::IsIncluded(int x, int y ) const {
@@ -84,47 +86,14 @@ void CHexagon::Move(Point Center2) {
     Center.y = Center2.y;
 }
 
-void CHexagon :: GetPoints() {
-
-    points[0].x = Center.x - 60 / 2; 
-    points[0].y = Center.y - 52;
-    points[1].x = Center.x + 60 / 2;
-    points[1].y = Center.y - 52;
-    points[2].x =  Center.x + 60;
-    points[2].y = Center.y;
-    points[3].y = Center.x + 60 / 2; 
-    points[3].y = Center.y + 52;
-    points[4].x = Center.x - 60 / 2;
-    points[4].y = Center.y + 52;
-    points[5].x = Center.x - 60;
-    points[5].y = Center.y;
-}
-
 void CHexagon::RotateCW() {
-    GetPoints();
-    for (int i = 0; i < 6; i++) {
-        Point temp;
-        temp.x = points[i].x;
-        temp.y = points[i].y;
-
-        points[i].x = Center.x + (temp.y - Center.y);
-        points[i].y = Center.y - (temp.x - Center.x);
-
-    }
+    rotated = !rotated;
  }
 
 void CHexagon::RotateACW() {
-    GetPoints();
-    for (int i = 0; i < 6; i++) {
-        Point temp;
-        temp.x = points[i].x;
-        temp.y = points[i].y;
-
-        points[i].x = Center.x -(temp.y - Center.y);
-        points[i].y = Center.y+ (temp.x - Center.x);
-
-    }
+    rotated = !rotated;
 }
+
 void CHexagon::Save(ofstream& OutFile)
 {
     OutFile << "HEXAGON " << ID << " "

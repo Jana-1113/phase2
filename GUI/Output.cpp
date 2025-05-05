@@ -233,12 +233,14 @@ void Output::DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool sele
 
 	pWind->DrawTriangle(P1.x, P1.y, P2.x, P2.y, P3.x, P3.y, style);
 }
-void Output::DrawHexagon(Point P, GfxInfo HexGfxInfo, bool selected) const
+void Output::DrawHexagon(Point P, GfxInfo HexGfxInfo, bool selected, bool rotated) const
 {
 	int xx = P.x;
 	int yy = P.y;
 	int X[6] = { xx + 60, xx + 30 ,xx - 30, xx - 60, xx - 30, xx + 30 };
 	int Y[6] = { yy, yy + 52, yy + 52,yy , yy - 52, yy - 52 };
+	int X_rotated[6] = { xx, xx - 52, xx - 52, xx, xx + 52, xx + 52 };
+	int Y_rotated[6] = { yy - 60, yy - 30, yy + 30, yy + 60, yy + 30, yy - 30 };
 
 	color DrawingClr;
 	if (selected)
@@ -256,8 +258,12 @@ void Output::DrawHexagon(Point P, GfxInfo HexGfxInfo, bool selected) const
 	else
 		style = FRAME;
 
-
-	pWind->DrawPolygon(X, Y, 6, style);
+	if (rotated) {
+		pWind->DrawPolygon(X_rotated, Y_rotated, 6, style);
+	}
+	else {
+		pWind->DrawPolygon(X, Y, 6, style);
+	}
 
 }
 

@@ -8,7 +8,7 @@ class CHexagon : public CFigure
 {
 private:
 	Point Center;
-	Point points[6];
+	bool rotated;
 public:
 	CHexagon();
 	CHexagon(Point, GfxInfo FigureGfxInfo);
@@ -18,7 +18,6 @@ public:
 	virtual void PrintFigureInfo(Output* pOut) const;
 	virtual Point getCenter();
 	virtual void Move(Point Center2);
-	void GetPoints();
 	virtual void RotateCW();
 	virtual void RotateACW();
 	void Save(ofstream& OutFile)  override;

@@ -21,7 +21,7 @@ public:
 	// -- Figures Drawing functions
 	void DrawRect(Point P1, Point P2, GfxInfo RectGfxInfo, bool selected = false) const; //Draw a rectangle
 	void DrawTri(Point P1, Point P2, Point P3, GfxInfo TriGfxInfo, bool selected = false) const;
-	void DrawHexagon(Point p, GfxInfo HexGfxInfo, bool selected = false)const;
+	void DrawHexagon(Point p, GfxInfo HexGfxInfo, bool selected = false, bool rotated = false)const;
 	void DrawCircle(Point P1, const int radius, GfxInfo CirGfxInfo, bool selected = false)const;
 	void DrawSquare(Point P, GfxInfo SquGfxInfo, bool selected = false)const;
 	void PrintMessage(string msg) const;	//Print a message on Status bar
