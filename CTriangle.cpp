@@ -1,7 +1,19 @@
 #include "CTriangle.h"
 # include <string>
 # include <iostream>
+# include <fstream>
 using namespace std;
+
+CTriangle::CTriangle() :CFigure()
+{
+	Corner1.x = 0;
+	Corner1.y = 0;
+	Corner2.x = 0;
+	Corner2.y = 0;
+	Corner3.x = 0;
+	Corner3.y = 0;
+
+}
 
 CTriangle::CTriangle(Point P1, Point P2, Point P3, GfxInfo FigureGfxInfo) :CFigure(FigureGfxInfo)
 {
@@ -73,3 +85,16 @@ Point CTriangle::getCenter() {
 	 Corner3.x += movevalue.x;
 	 Corner3.y += movevalue.y;
 };
+
+ void CTriangle::Save(ofstream& OutFile)
+ {
+	 OutFile << "Triangle " << ID << " "
+		 << Corner1.x << " " << Corner1.y << " "
+		 << Corner2.x << " " << Corner2.y << " " << Corner3.x << " " << Corner3.y << " " << CFigure::ColorConverter(FigGfxInfo.DrawClr) << " ";
+
+ }
+
+ void CTriangle::Load(ifstream& InFile) {
+	 InFile >> ID >> Corner1.x >> Corner1.y >> Corner2.x >> Corner2.y >> Corner3.x >> Corner3.y >> colorofFig;
+	 CFigure::StringConverter(colorofFig);
+ }
