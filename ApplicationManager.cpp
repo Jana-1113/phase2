@@ -61,53 +61,53 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 	//According to Action Type, create the corresponding action object
 	switch (ActType)
 	{
-	case DRAW_RECT:
-		pAct = new AddRectAction(this);
-		break;
-	case DRAW_SQUARE:
-		pAct = new AddSquareAction(this);
-		break;
-	case DRAW_CIRCLE:
-		pAct = new AddCircleAction(this);
-		break;
-	case DRAW_TRIANGLE:
-		pAct = new AddTriangleAction(this);
-		break;
-	case DRAW_HEXAGON:
-		pAct = new AddHexagonAction(this);
-		break;
-	case SELECT:
-		pAct = new AddSelectAction(this);
-		break;
-	case DELETE_FIGURE:
-		pAct = new AddDeleteAction(this);
-		break;
-	case CLEAR_ALL:
-		pAct = new AddClearAllAction(this);
-		break;
-	case SWAP:
-		pAct = new Swap(this);
-		break;
-	case SAVE_GRAPH: //a cclick on save figure
-		pAct = new ActionSave(this);
-		break;
-	case LOAD_GRAPH:// a click on load figure
-		pAct = new ActionLoad(this);
-		break;
-	case TO_PLAY:
-		pAct = new SwitchToPlay(this);
-		break;
-	case TO_DRAW:
-		pAct = new SwitchToDraw(this);
-		return;
-	case ROTATE_FIGURE:
-		pAct = new RotateAction(this);
-		break;
-	case EXIT:
-		pAct = new ExitAction(this);
-		break;
-	case STATUS:	//a click on the status bar ==> no action
-		return;
+		case DRAW_RECT:
+			pAct = new AddRectAction(this);
+			break;
+		case DRAW_SQUARE:
+			pAct = new AddSquareAction(this);
+			break;
+		case DRAW_CIRCLE:
+			pAct = new AddCircleAction(this);
+			break;
+		case DRAW_TRIANGLE:
+			pAct = new AddTriangleAction(this);
+			break;
+		case DRAW_HEXAGON:
+			pAct = new AddHexagonAction(this);
+			break;
+		case SELECT:
+			pAct = new AddSelectAction(this);
+			break;
+		case DELETE_FIGURE:
+			pAct = new AddDeleteAction(this);
+			break;
+		case CLEAR_ALL:
+			pAct = new AddClearAllAction(this);
+			break;
+		case SWAP:
+			pAct = new Swap(this);
+			break;
+		case SAVE_GRAPH: //a cclick on save figure
+			pAct = new ActionSave(this);
+			break;
+		case LOAD_GRAPH:// a click on load figure
+			pAct = new ActionLoad(this);
+			break;
+		case TO_PLAY:
+			pAct = new SwitchToPlay(this);
+			break;
+		case TO_DRAW:
+			pAct = new SwitchToDraw(this);
+			break;
+		case ROTATE_FIGURE:
+			pAct = new RotateAction(this);
+			break;
+		case EXIT:
+			pAct = new ExitAction(this);
+			break;
+		case STATUS:	//a click on the status bar ==> no action
+			break;
 	}
 
 	//Execute the created action

@@ -69,6 +69,7 @@ void CTriangle::PrintFigureInfo(Output* pOut) const {
 }
 
 Point CTriangle::getCenter() {
+	Point Center;
 	Center.x = (Corner1.x + Corner2.x +Corner3.x) / 3;
 	Center.y = (Corner1.y +Corner2.y + Corner3.y) / 3;
 	return Center;
@@ -76,6 +77,7 @@ Point CTriangle::getCenter() {
 
  void CTriangle:: Move(Point Center2){
 	 Point movevalue;
+	 Point Center = getCenter();
 	 movevalue.x = Center2.x - Center.x;
 	 movevalue.y = Center2.y - Center.y;
 	 Corner1.x += movevalue.x;
@@ -86,26 +88,42 @@ Point CTriangle::getCenter() {
 	 Corner3.y += movevalue.y;
 };
 
- void CTriangle::RotateCW() {
-	 Corner1.x = Center.x + (Corner1.y - Center.y);
-	 Corner1.y = Center.y - (Corner1.x - Center.x);
+ void CTriangle::RotateACW() {
+	 Point temp1, temp2, temp3;
+	 temp1.x = Corner1.x;
+	 temp1.y = Corner1.y;
+	 temp2.x = Corner2.x;
+	 temp2.y = Corner2.y;
+	 temp3.x = Corner3.x;
+	 temp3.y = Corner3.y;
+	 Point Center = getCenter();
+	 Corner1.x = Center.x + (temp1.y - Center.y);
+	 Corner1.y = Center.y - (temp1.x - Center.x);
 
-	 Corner2.x = Center.x + (Corner2.y - Center.y);
-	 Corner2.y = Center.y - (Corner2.x - Center.x);
+	 Corner2.x = Center.x + (temp2.y - Center.y);
+	 Corner2.y = Center.y - (temp2.x - Center.x);
 
-	 Corner3.x = Center.x + (Corner3.y - Center.y);
-	 Corner3.y = Center.y - (Corner3.x - Center.x);
+	 Corner3.x = Center.x + (temp3.y - Center.y);
+	 Corner3.y = Center.y - (temp3.x - Center.x);
  }
 
- void CTriangle::RotateACW() {
-	 Corner1.x = Center.x - (Corner1.y - Center.y);
-	 Corner1.y = Center.y + (Corner1.x - Center.x);
+ void CTriangle::RotateCW() {
+	 Point temp1, temp2, temp3;
+	 temp1.x = Corner1.x;
+	 temp1.y = Corner1.y;
+	 temp2.x = Corner2.x;
+	 temp2.y = Corner2.y;
+	 temp3.x = Corner3.x;
+	 temp3.y = Corner3.y;
+	 Point Center = getCenter();
+	 Corner1.x = Center.x - (temp1.y - Center.y);
+	 Corner1.y = Center.y + (temp1.x - Center.x);
 
-	 Corner2.x = Center.x - (Corner2.y - Center.y);
-	 Corner2.y = Center.y + (Corner2.x - Center.x);
+	 Corner2.x = Center.x - (temp2.y - Center.y);
+	 Corner2.y = Center.y + (temp2.x - Center.x);
 
-	 Corner3.x = Center.x - (Corner3.y - Center.y);
-	 Corner3.y = Center.y + (Corner3.x - Center.x);
+	 Corner3.x = Center.x - (temp3.y - Center.y);
+	 Corner3.y = Center.y + (temp3.x - Center.x);
  }
  void CTriangle::Save(ofstream& OutFile)
  {

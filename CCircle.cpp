@@ -49,6 +49,7 @@ void CCircle::Move(Point Center2) {
 	Center.x = Center2.x;
 	Center.y = Center2.y;
 }
+
 void CCircle::Save(ofstream& OutFile)
 {
 	OutFile << "CIRCLE " << ID << " "

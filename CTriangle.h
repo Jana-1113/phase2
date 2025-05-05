@@ -9,7 +9,6 @@ private:
 	Point Corner1;
 	Point Corner2;
 	Point Corner3;
-	Point Center;
 public:
 	CTriangle();
 	CTriangle(Point, Point, Point , GfxInfo FigureGfxInfo);

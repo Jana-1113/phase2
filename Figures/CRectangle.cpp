@@ -1,8 +1,17 @@
 #include "CRectangle.h"
 # include <string>
 # include <iostream>
+# include <fstream>
 # include "CFigure.h"
 using namespace std;
+
+CRectangle::CRectangle() : CFigure()
+{
+	Corner1.x = 0;
+	Corner1.y = 0;
+	Corner2.x = 0;
+	Corner2.y = 0;
+}
 
 CRectangle::CRectangle(Point P1, Point P2, GfxInfo FigureGfxInfo):CFigure(FigureGfxInfo)
 {
@@ -34,6 +43,7 @@ void CRectangle::PrintFigureInfo(Output* pOut) const {
 }
 
 Point CRectangle::getCenter() {
+	Point Center;
 	Center.x = (Corner1.x + Corner2.x) / 2;
 	Center.y = (Corner1.y + Corner2.y ) / 2;
 	return Center;
@@ -41,6 +51,7 @@ Point CRectangle::getCenter() {
 
 void CRectangle::Move(Point Center2) {
 		Point movevalue;
+		Point Center = getCenter();
 		movevalue.x = Center2.x - Center.x;
 		movevalue.y = Center2.y - Center.y;
 		Corner1.x += movevalue.x;
@@ -49,12 +60,13 @@ void CRectangle::Move(Point Center2) {
 		Corner2.y += movevalue.y;
 }
 
-void CRectangle::RotateCW() {
+void CRectangle::RotateACW() {
 	Point temp1, temp2;
 	temp1.x = Corner1.x;
 	temp1.y = Corner1.y;
 	temp2.x = Corner2.x;
 	temp2.y = Corner2.y;
+	Point Center = getCenter();
 
 	Corner1.x = Center.x + (temp1.y - Center.y);
 	Corner1.y = Center.y - (temp1.x - Center.x);
@@ -62,12 +74,13 @@ void CRectangle::RotateCW() {
 	Corner2.x = Center.x + (temp2.y - Center.y);
 	Corner2.y = Center.y - (temp2.x - Center.x);
 }
-void CRectangle::RotateACW() {
+void CRectangle::RotateCW() {
 	Point temp1, temp2;
 	temp1.x = Corner1.x;
 	temp1.y = Corner1.y;
 	temp2.x = Corner2.x;
 	temp2.y = Corner2.y;
+	Point Center = getCenter();
 
 	Corner1.x = Center.x - (temp1.y - Center.y);
 	Corner1.y = Center.y + (temp1.x - Center.x);

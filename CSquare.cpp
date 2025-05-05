@@ -7,6 +7,7 @@ using namespace std;
 #include "Figures/CFigure.h"
 #include "Figures/CRectangle.h"
 #include <fstream> 
+#include "ApplicationManager.h"
 
 CSquare::CSquare() :CFigure() {
     Center.x = 0;

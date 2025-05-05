@@ -8,8 +8,8 @@ class CRectangle : public CFigure
 private:
 	Point Corner1;	
 	Point Corner2;
-	Point Center;
 public:
+	CRectangle();
 	CRectangle(Point , Point, GfxInfo FigureGfxInfo );
 	virtual void Draw(Output* pOut) const;
 	virtual bool IsIncluded(int x , int y)const;
@@ -19,8 +19,6 @@ public:
 	virtual void Move(Point Center2);
 	virtual void RotateCW();
 	virtual void RotateACW();
-
-	void Draw(Output* pOut) const override;
 	void Save(ofstream& OutFile)  override;
 	void Load(ifstream& InFile)  override;
 

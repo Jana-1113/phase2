@@ -19,7 +19,7 @@ protected:
 	/// Add more parameters if needed.
 
 public:
-
+	CFigure();
 	CFigure(GfxInfo FigureGfxInfo);
 
 	void SetSelected(bool s);	//select/unselect the figure
@@ -33,8 +33,8 @@ public:
 	virtual void PrintFigureInfo(Output* pOut) const = 0;
 	virtual Point getCenter()  = 0;
 	virtual void Move(Point Center2) = 0;
-	virtual void RotateCW() = 0;
-	virtual void RotateACW() = 0;
+	virtual void RotateCW() {};
+	virtual void RotateACW() {};
 	virtual void Save(ofstream& OutFile) = 0;	// //Save the figure parameters to the file
 
 	virtual void Load(ifstream& Infile) = 0;	//Load the figure parameters to the file
