@@ -48,3 +48,30 @@ void CRectangle::Move(Point Center2) {
 		Corner2.x += movevalue.x;
 		Corner2.y += movevalue.y;
 }
+
+void CRectangle::RotateCW() {
+	Point temp1, temp2;
+	temp1.x = Corner1.x;
+	temp1.y = Corner1.y;
+	temp2.x = Corner2.x;
+	temp2.y = Corner2.y;
+
+	Corner1.x = Center.x + (temp1.y - Center.y);
+	Corner1.y = Center.y - (temp1.x - Center.x);
+
+	Corner2.x = Center.x + (temp2.y - Center.y);
+	Corner2.y = Center.y - (temp2.x - Center.x);
+}
+void CRectangle::RotateACW() {
+	Point temp1, temp2;
+	temp1.x = Corner1.x;
+	temp1.y = Corner1.y;
+	temp2.x = Corner2.x;
+	temp2.y = Corner2.y;
+
+	Corner1.x = Center.x - (temp1.y - Center.y);
+	Corner1.y = Center.y + (temp1.x - Center.x);
+
+	Corner2.x = Center.x - (temp2.y - Center.y);
+	Corner2.y = Center.y + (temp2.x - Center.x);
+}

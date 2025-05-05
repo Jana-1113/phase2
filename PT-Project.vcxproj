@@ -132,6 +132,7 @@
     <ClCompile Include="AddDeleteAction.cpp" />
     <ClCompile Include="AddHexagonAction.cpp" />
     <ClCompile Include="AddSelectAction.cpp" />
+    <ClCompile Include="RotateAction.cpp" />
     <ClCompile Include="AddTriangleAction.cpp" />
     <ClCompile Include="CCircle.cpp" />
     <ClCompile Include="CHexagon.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="AddDeleteAction.h" />
     <ClInclude Include="AddHexagonAction.h" />
     <ClInclude Include="AddSelectAction.h" />
+    <ClInclude Include="RotateAction.h" />
     <ClInclude Include="AddTriangleAction.h" />
     <ClInclude Include="CCircle.h" />
     <ClInclude Include="CHexagon.h" />

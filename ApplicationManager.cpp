@@ -8,6 +8,7 @@
 #include "AddDeleteAction.h"
 #include "AddClearAllAction.h"
 #include "Swap.h"
+#include "RotateAction.h"
 # include <iostream>
 using namespace std;
 
@@ -76,6 +77,9 @@ void ApplicationManager::ExecuteAction(ActionType ActType)
 		break;
 	case SWAP:
 		pAct = new Swap(this);
+		break;
+	case ROTATE_FIGURE:
+		pAct = new RotateAction(this);
 		break;
 	case EXIT:
 

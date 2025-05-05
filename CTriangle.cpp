@@ -73,3 +73,25 @@ Point CTriangle::getCenter() {
 	 Corner3.x += movevalue.x;
 	 Corner3.y += movevalue.y;
 };
+
+ void CTriangle::RotateCW() {
+	 Corner1.x = Center.x + (Corner1.y - Center.y);
+	 Corner1.y = Center.y - (Corner1.x - Center.x);
+
+	 Corner2.x = Center.x + (Corner2.y - Center.y);
+	 Corner2.y = Center.y - (Corner2.x - Center.x);
+
+	 Corner3.x = Center.x + (Corner3.y - Center.y);
+	 Corner3.y = Center.y - (Corner3.x - Center.x);
+ }
+
+ void CTriangle::RotateACW() {
+	 Corner1.x = Center.x - (Corner1.y - Center.y);
+	 Corner1.y = Center.y + (Corner1.x - Center.x);
+
+	 Corner2.x = Center.x - (Corner2.y - Center.y);
+	 Corner2.y = Center.y + (Corner2.x - Center.x);
+
+	 Corner3.x = Center.x - (Corner3.y - Center.y);
+	 Corner3.y = Center.y + (Corner3.x - Center.x);
+ }

@@ -17,6 +17,8 @@ public:
 	virtual void PrintFigureInfo(Output* pOut) const;
 	virtual Point getCenter();
 	virtual void Move(Point Center2);
+	virtual void RotateCW();
+	virtual void RotateACW();
 
 };
 

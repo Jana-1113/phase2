@@ -31,6 +31,8 @@ public:
 	virtual void PrintFigureInfo(Output* pOut) const = 0;
 	virtual Point getCenter()  = 0;
 	virtual void Move(Point Center2) = 0;
+	virtual void RotateCW() = 0;
+	virtual void RotateACW() = 0;
 	///The following functions should be supported by the figure class
 	///It should be overridden by each inherited figure
 

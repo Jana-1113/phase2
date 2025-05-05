@@ -77,3 +77,50 @@ void CHexagon::Move(Point Center2) {
     Center.x = Center2.x;
     Center.y = Center2.y;
 }
+
+void CHexagon :: GetPoints() {
+
+    points[0].x = Center.x - 60 / 2; 
+    points[0].y = Center.y - 52;
+    points[1].x = Center.x + 60 / 2;
+    points[1].y = Center.y - 52;
+    points[2].x =  Center.x + 60;
+    points[2].y = Center.y;
+    points[3].y = Center.x + 60 / 2; 
+    points[3].y = Center.y + 52;
+    points[4].x = Center.x - 60 / 2;
+    points[4].y = Center.y + 52;
+    points[5].x = Center.x - 60;
+    points[5].y = Center.y;
+}
+
+void CHexagon::RotateCW() {
+    GetPoints();
+    for (int i = 0; i < 6; i++) {
+        Point temp;
+        temp.x = points[i].x;
+        temp.y = points[i].y;
+
+        points[i].x = Center.x + (temp.y - Center.y);
+        points[i].y = Center.y - (temp.x - Center.x);
+
+    }
+ }
+
+void CHexagon::RotateACW() {
+    GetPoints();
+    for (int i = 0; i < 6; i++) {
+        Point temp;
+        temp.x = points[i].x;
+        temp.y = points[i].y;
+
+        points[i].x = Center.x -(temp.y - Center.y);
+        points[i].y = Center.y+ (temp.x - Center.x);
+
+    }
+}
+
+
+
+
+
